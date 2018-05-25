@@ -22,5 +22,5 @@ function echo_color2(){
    esac
 }
 
-echo_color() green "green is first function"
-echo_color2() red "red is second function "
+echo_color green "green is first function"
+echo_color2 red "red is second function "
