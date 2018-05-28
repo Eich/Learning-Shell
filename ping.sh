@@ -10,7 +10,7 @@ for IP in $IP_LIST;do
     fi
 done
 #If the network has jitter, using ping 3 times to test
-IP_LIST="192.168.1.109 192.168.1.110"
+IP_LIST="192.168.1.109 192.168.1.110 192.168.1.111"
 for IP in $IP_LIST;do
     NUM=1
     while [ $NUM -le 3 ];do #le it means <=
@@ -21,8 +21,11 @@ for IP in $IP_LIST;do
            # echo "$IP ping is failure"
            FINAL_COUNT[$NUM]=$IP
            let NUM++
-           echo "$FINAL_COUNT[$NUM]"
+           #echo "$FINAL_COUNT[$NUM]"
+           if [ ${#FINAL_COUNT[*]} -eq 3 ];then  #use # to count the FINAL_COUNT numbery 
+               echo "${FINAL_COUNT[1]} ping is failure"
+               unset FINAL_COUNT[*]  #need to unset the value of array
+           fi
         fi
     done
 done
-echo ${FINAL_COUNT[*]}
