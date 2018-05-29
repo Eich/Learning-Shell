@@ -29,3 +29,23 @@ for IP in $IP_LIST;do
         fi
     done
 done
+
+#the second way to test the host status
+#If the network has jitter, using ping 3 times to test
+IP_LIST="192.168.1.109 192.168.1.110 192.168.1.111"
+for IP in $IP_LIST;do
+    FINAL_COUNT=0
+    for ((i=1;i<=3;i++));do #le it means <=
+        if ping -c 1 $IP &>/dev/null;then
+            echo "$IP ping is Successful"
+            break
+        else
+           # echo "$IP ping is failure"
+           let FINAL_COUNT++ 
+           #echo "$FINAL_COUNT"
+        fi
+        if [ $FINAL_COUNT -eq 3 ];then 
+             echo "$IP ping is failure"
+        fi
+    done
+done
