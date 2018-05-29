@@ -22,10 +22,10 @@ for IP in $IP_LIST;do
            FINAL_COUNT[$NUM]=$IP
            let NUM++
            #echo "$FINAL_COUNT[$NUM]"
-           if [ ${#FINAL_COUNT[*]} -eq 3 ];then  #use # to count the FINAL_COUNT numbery 
-               echo "${FINAL_COUNT[1]} ping is failure"
-               unset FINAL_COUNT[*]  #need to unset the value of array
-           fi
+        fi
+        if [ ${#FINAL_COUNT[*]} -eq 3 ];then  #use # to count the FINAL_COUNT numbery 
+            echo "${FINAL_COUNT[1]} ping is failure"
+            unset FINAL_COUNT[*]  #need to unset the value of array
         fi
     done
 done
